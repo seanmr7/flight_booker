@@ -1,3 +1,8 @@
 <h1>Index Page</h1>
 
-<%= @flights.first.inspect %>
+<%= form_with model: @flights, method: :get do |form| %>
+
+  <%= label_tag :origin_id %>
+  <%= collection_select(:origin_id, Airport.all, :id, :city, prompt: true) %>
+
+<% end %>

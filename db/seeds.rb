@@ -91,6 +91,6 @@ Date.today.upto(Date.new(2021, 02, 28)) do |date|
         )
       end
     end
-    p origin
   end
+  p date
 end
