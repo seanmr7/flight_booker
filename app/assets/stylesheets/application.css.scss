@@ -10,8 +10,26 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+ *
  */
  
-@import "bulma";
+ @import "bootstrap";
+ @import "/\*";
+
+ .to-from-form {
+   padding-top: 7%;
+ }
+
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+ td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+body {
+  background-color: rgb(247, 247, 235);
+}

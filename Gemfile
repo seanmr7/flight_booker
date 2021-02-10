@@ -42,8 +42,11 @@ gem 'hirb', '~> 0.7.3'
 # User Faker gem to generate random datetimes
 gem 'faker', '~> 1.6', '>= 1.6.3'
 
-# Use bulma for front-end framework
-gem "bulma-rails", "~> 0.9.1"
+# Use Bootstrap library for front-end UI and layout
+gem 'bootstrap', '~>5.0.0.beta1'
+
+# Add jquery-rails gem for Bootstrap
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,6 +60,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  # Use the PostgreSQL gem for Heroku production servers
+  gem 'pg', '~> 0.18.4'
 end
 
 group :test do

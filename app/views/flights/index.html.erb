@@ -1,22 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= form_with(url: root_path, method: :get, local: true) do |f| %>
+        <div class="row g-2">
+        <%= hidden_field_tag :index, "true" %>
+          <div class="col">
+            <%= select_tag(:origin_id, options_for_select(@airport_options), prompt: "From ", class: "form-select") %>
+          </div>
 
-<%= form_with(url: root_path, method: :get, local: true) do |f| %>
+          <div class="col">
+            <%= select_tag(:destination_id, options_for_select(@airport_options), prompt: "To ", class: "form-select") %>
+          </div>
 
-  <%= hidden_field_tag :index, "true" %>
-  <%= select_tag(:origin_id, options_for_select(@airport_options), prompt: "From ") %>
+          <div class="col">
+            <%= f.text_field :passengers, placeholder: "Number of Passengers", class: "form-control" %>
+          </div>
 
-  <%= select_tag(:destination_id, options_for_select(@airport_options), prompt: "To ") %>
+          <div class="col">
+            <%= select_tag(:date, options_for_select(@date_options), prompt: "Date ", class: "form-select") %>
+          </div>
 
-  <%= f.text_field :passengers %>
-
-  <%= select_tag(:date, options_for_select(@date_options), prompt: "Date ") %>
-
-  <%= submit_tag 'Find Flights', name: nil %>
-<% end %>
-
-
-<% if params %>
-<% @flights.each do |flight| %>
-    <%= flight.origin.city %>
-    <%= flight.destination.city %>
-  <%end %>
-<% end %>
+          <div class="col">
+            <%= submit_tag 'Find Flights', name: nil, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <% if params %>
+    <div class="container-fluid pt-5 mx-auto">
+      <div class="row">
+        <div class="col-md-9 offset-md-1">
+          <table class="table">
+            <thead>
+              <th scope="col text-center">Departing From</th>
+              <th scope="col">Arriving At</th>
+              <th scope="col">Flight Duration</th>
+              <th class="th-sm" scope="col">Departure Time</th>
+              <th class="th-sm" scope="col"></th>
+            </thead>
+            <tbody>
+              <% @flights.each do |flight| %>
+                <tr>
+                  <td><%= flight.origin.city %></td>
+                  <td><%= flight.destination.city %></td>
+                  <td><%= flight.duration %> Minutes</td>
+                  <td><%= flight.departure_time.strftime("%I:%M:%S %p") %></td>
+                  <td colspan="1"><%= submit_tag 'FLY NOW', name: nil, class: "btn btn-primary" %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
