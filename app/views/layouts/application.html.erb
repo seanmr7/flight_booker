@@ -6,11 +6,19 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= image_tag("logo/biplane.png", class: "m-2") %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-nav mb-5">
+      <div class="container-fluid">
+        <%= link_to '/', class: "navbar-brand" do %>
+          <%= image_tag("logo/biplane.png", size: "64x38") %>
+          <span class="ps-1 logo-font"><b>Simply Flights</b></span>
+        <% end %>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>

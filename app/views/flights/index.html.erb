@@ -5,11 +5,11 @@
         <div class="row g-2">
         <%= hidden_field_tag :index, "true" %>
           <div class="col">
-            <%= select_tag(:origin_id, options_for_select(@airport_options), prompt: "From ", class: "form-select") %>
+            <%= select_tag(:origin_id, options_for_select(@airport_options), prompt: "From ", required: true, class: "form-select") %>
           </div>
 
           <div class="col">
-            <%= select_tag(:destination_id, options_for_select(@airport_options), prompt: "To ", class: "form-select") %>
+            <%= select_tag(:destination_id, options_for_select(@airport_options), prompt: "To ", required: true, class: "form-select") %>
           </div>
 
           <div class="col">
@@ -17,7 +17,7 @@
           </div>
 
           <div class="col">
-            <%= select_tag(:date, options_for_select(@date_options), prompt: "Date ", class: "form-select") %>
+            <%= select_tag(:date, options_for_select(@date_options), prompt: "Date ", required: true, class: "form-select") %>
           </div>
 
           <div class="col">
@@ -28,7 +28,7 @@
     </div>
   </div>
   <br>
-  <% if params %>
+  <% if params.has_key?(:origin_id) %>
     <div class="container-fluid pt-5 mx-auto">
       <div class="row">
         <div class="col-md-9 offset-md-1">
@@ -47,7 +47,7 @@
                   <td><%= flight.destination.city %></td>
                   <td><%= flight.duration %> Minutes</td>
                   <td><%= flight.departure_time.strftime("%I:%M:%S %p") %></td>
-                  <td colspan="1"><%= submit_tag 'FLY NOW', name: nil, class: "btn btn-primary" %></td>
+                  <td colspan="1"><%= submit_tag 'Book Flight', name: nil, class: "btn btn-primary" %></td>
                 </tr>
               <% end %>
             </tbody>
