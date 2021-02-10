@@ -1,23 +1,22 @@
-<h1>Index Page</h1>
 
+<%= form_with(url: root_path, method: :get, local: true) do |f| %>
 
-
-<%= form_with(url: root_path, method: :get, local: true) do %>
-  
   <%= hidden_field_tag :index, "true" %>
   <%= select_tag(:origin_id, options_for_select(@airport_options), prompt: "From ") %>
-      
+
   <%= select_tag(:destination_id, options_for_select(@airport_options), prompt: "To ") %>
+
+  <%= f.text_field :passengers %>
 
   <%= select_tag(:date, options_for_select(@date_options), prompt: "Date ") %>
 
   <%= submit_tag 'Find Flights', name: nil %>
 <% end %>
 
+
 <% if params %>
-  
-  <%= @flights.inspect %>
-  <% @flights.each do |flight| %>
-    <%= flight.origin_id %>
+<% @flights.each do |flight| %>
+    <%= flight.origin.city %>
+    <%= flight.destination.city %>
   <%end %>
 <% end %>
