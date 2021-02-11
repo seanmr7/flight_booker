@@ -20,11 +20,19 @@
             <%= f.text_field :destination_city, value: params[:destination_city], readonly: true, class: "form-control" %>
           </div>
 
-          <div class="col">
-          <h4>Passenger Information</h4>
+          <div class="col mt-3">
+            <h4>Passenger Information</h4>
             <%= f.fields_for :passengers do |passenger_form| %>
-              <%= passenger_form.label :name, class: "form-label" %>
-              <%= passenger_form.text_field :name, class: "form-control" %>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <%= passenger_form.label :name, class: "form-label" %>
+                  <%= passenger_form.text_field :name, class: "form-control" %>
+                </div>
+                <div class="col-md-6">
+                  <%= passenger_form.label :email, class: "form-label" %>
+                  <%= passenger_form.text_field :email, class: "form-control" %>
+                </div>
+              </div>
             <% end %>
           </div>
         </div>
