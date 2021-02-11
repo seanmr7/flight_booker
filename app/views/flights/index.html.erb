@@ -42,10 +42,19 @@
             </thead>
             <tbody>
               <% @flights.each do |flight| %>
-                <%= form_with(url: root_path, method: :get, local: true) do |f| %>
+                <%= form_with(url: new_booking_path, method: :get, local: :true) do |f| %>
+                  <%= f.hidden_field :passengers, value: params[:passengers] %>
+                  <%= f.hidden_field :flight_number, value: flight.id %>
+                  <%= f.hidden_field :date, value: flight.date.strftime("%m/%d/%y") %>
                   <tr>
-                    <td><%= flight.origin.city %></td>
-                    <td><%= flight.destination.city %></td>
+                    <td>
+                      <%= f.hidden_field :origin_city, value: flight.origin.city %>
+                      <%= flight.origin.city %>
+                    </td>
+                    <td>
+                      <%= f.hidden_field :destination_city, value: flight.destination.city %>
+                      <%= flight.destination.city %>
+                    </td>
                     <td><%= flight.duration %> Minutes</td>
                     <td><%= flight.departure_time.strftime("%I:%M:%S %p") %></td>
                     <td colspan="1"><%= submit_tag 'Book Flight', name: nil, class: "btn btn-primary" %></td>
