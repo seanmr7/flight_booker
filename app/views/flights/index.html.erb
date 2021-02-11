@@ -13,7 +13,7 @@
           </div>
 
           <div class="col">
-            <%= f.text_field :passengers, placeholder: "Number of Passengers", class: "form-control" %>
+            <%= f.text_field :passengers, placeholder: "Passengers", class: "form-control" %>
           </div>
 
           <div class="col">
@@ -42,13 +42,15 @@
             </thead>
             <tbody>
               <% @flights.each do |flight| %>
-                <tr>
-                  <td><%= flight.origin.city %></td>
-                  <td><%= flight.destination.city %></td>
-                  <td><%= flight.duration %> Minutes</td>
-                  <td><%= flight.departure_time.strftime("%I:%M:%S %p") %></td>
-                  <td colspan="1"><%= submit_tag 'Book Flight', name: nil, class: "btn btn-primary" %></td>
-                </tr>
+                <%= form_with(url: root_path, method: :get, local: true) do |f| %>
+                  <tr>
+                    <td><%= flight.origin.city %></td>
+                    <td><%= flight.destination.city %></td>
+                    <td><%= flight.duration %> Minutes</td>
+                    <td><%= flight.departure_time.strftime("%I:%M:%S %p") %></td>
+                    <td colspan="1"><%= submit_tag 'Book Flight', name: nil, class: "btn btn-primary" %></td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>
