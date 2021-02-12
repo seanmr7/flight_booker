@@ -11,14 +11,23 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-nav mb-5">
-      <div class="container-fluid">
-        <%= link_to '/', class: "navbar-brand" do %>
-          <%= image_tag("logo/biplane.png", size: "64x38") %>
-          <span class="ps-1 logo-font"><b>Simply Flights</b></span>
-        <% end %>
+    <div id="page-container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-nav mb-5">
+        <div class="container-fluid">
+          <%= link_to '/', class: "navbar-brand" do %>
+            <%= image_tag("logo/biplane.png", size: "64x38") %>
+            <span class="ps-1 logo-font"><b>Simply Flights</b></span>
+          <% end %>
+        </div>
+      </nav>
+
+      <div id="content-wrap">
+        <%= yield %>
       </div>
-    </nav>
-    <%= yield %>
+
+      <footer id="footer">
+        <div class="text-muted text-center">Created by: Sean Riedl - <%= link_to "Personal Site", "http://www.sean-blog.com/"%> - <%= link_to "Github", "https://github.com/seanmr7" %></div>
+      </footer>
+    </div>
   </body>
 </html>

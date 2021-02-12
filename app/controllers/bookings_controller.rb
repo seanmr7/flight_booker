@@ -1,4 +1,9 @@
 class BookingsController < ApplicationController
+  def show
+    @booking = Booking.find(params[:id])
+    @flight= Flight.find(@booking.flight.id)
+  end
+  
   def new
     @flight = Flight.find(params[:flight_id])
     @booking = Booking.new
@@ -10,11 +15,12 @@ class BookingsController < ApplicationController
 
     if @booking.save
       flash[:success] = "Flight Booked!"
-      redirect_to root_path
+      redirect_to booking_path(id: @booking.id)
     else
       render action: :new
     end
   end
+
 
   private
     def booking_params
