@@ -76,7 +76,9 @@ airports[7] = Airport.create(city: "Boston", airport_code: "BOS")
 
 p get_duration(airports[0].airport_code, airports[2].airport_code)
 
-Date.today.upto(Date.new(2021, 02, 28)) do |date|
+start_date = Date.new(2022, 03, 01)
+
+start_date.upto(Date.new(2022, 03, 31)) do |date|
   airports.each do |origin|
     airports.each do |destination|
       next if origin == destination
@@ -92,5 +94,4 @@ Date.today.upto(Date.new(2021, 02, 28)) do |date|
       end
     end
   end
-  p date
 end
