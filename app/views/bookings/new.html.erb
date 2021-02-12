@@ -1,3 +1,5 @@
+<%= @flight.inspect %>
+
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto">
@@ -5,7 +7,7 @@
         <div class="row g-2">
           <div class="col-md-6">
             <%= f.label :flight_id, "Flight Number", class: "form-label" %>
-            <%= f.text_field :flight_id, value: params[:flight_number], readonly: true, class: "form-control" %>
+            <%= f.text_field :flight_id, value: params[:flight_id], readonly: true, class: "form-control" %>
           </div>
           <div class="col-md-6">
             <%= f.label :date, class: "form-label" %>
@@ -32,8 +34,16 @@
                   <%= passenger_form.label :email, class: "form-label" %>
                   <%= passenger_form.text_field :email, class: "form-control" %>
                 </div>
-              </div>
             <% end %>
+          </div>
+
+          <div class="row g-2">
+            <div class="col-auto">
+              <%= submit_tag 'Book Tickets', name: nil, class: "btn btn-primary" %>
+            </div>
+            <div class="col-md-1">
+              <%= link_to "Cancel", root_path, class: "btn btn-danger" %>
+            </div>
           </div>
         </div>
       <% end %>

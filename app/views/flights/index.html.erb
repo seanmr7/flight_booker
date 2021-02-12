@@ -44,7 +44,7 @@
               <% @flights.each do |flight| %>
                 <%= form_with(url: new_booking_path, method: :get, local: :true) do |f| %>
                   <%= f.hidden_field :passengers, value: params[:passengers] %>
-                  <%= f.hidden_field :flight_number, value: flight.id %>
+                  <%= f.hidden_field :flight_id, value: flight.id %>
                   <%= f.hidden_field :date, value: flight.date.strftime("%m/%d/%y") %>
                   <tr>
                     <td>
