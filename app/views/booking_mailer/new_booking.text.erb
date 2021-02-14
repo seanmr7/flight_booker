@@ -1,1 +1,12 @@
-Text booking information
+Thank you <%= @passenger.name %> for booking with SimplyFlights
+
+Booking Information
+  Outgoing: <%= @booking.origin_city %>
+  Destination: <%= @booking.destination_city %>
+  Date: <%= @booking.flight.date.strftime("%D") %>
+  Departure Time: <%= @booking.flight.departure_time.strftime("%I:%M:%S %p") %>
+
+Passenger Information
+<% @booking.passengers.each do |passenger| %>
+  <%= passenger.name %>, <%= passenger.email %>
+<% end %>

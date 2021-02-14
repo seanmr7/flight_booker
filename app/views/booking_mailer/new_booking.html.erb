@@ -1,1 +1,12 @@
-<h1>HTML booking information</h1>
+<h1>Thank you <%= @passenger.name %> for booking with SimplyFlights</h1>
+
+<h4>Booking Information</h1>
+<p>Outgoing: <%= @booking.origin_city %></p>
+<p>Destination: <%= @booking.destination_city %></p>
+<p>Date: <%= @booking.flight.date.strftime("%D") %></p>
+<p>Departure Time: <%= @booking.flight.departure_time.strftime("%I:%M:%S %p") %></p>
+<h4>Passenger Information</h4>
+<% @booking.passengers.each do |passenger| %>
+  <p><%= passenger.name %>, <%= passenger.email %></p>
+<% end %>
+<%= image_tag(attachments['email-logo.png'].url) %>
